@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 //@XmlRootElement  // for generating result in xml format. eta dile o chole abar na dile problem nai.
 @Entity(name = "patient_info")
-public class Patient {
+public class PatientEntity {
 
     @Id
     @GeneratedValue
@@ -30,10 +30,10 @@ public class Patient {
     @NotNull
     private String patientEmail;
 
-    public Patient() {
+    public PatientEntity() {
     }
 
-//    public Patient(int patientId, String patientName, String patientAddress, int patientAge, String patientContactNo, String patientEmail) {
+//    public PatientEntity(int patientId, String patientName, String patientAddress, int patientAge, String patientContactNo, String patientEmail) {
 //        super();
 //        this.patientId=patientId;
 //        this.patientName=patientName;
