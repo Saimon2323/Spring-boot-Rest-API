@@ -1,6 +1,6 @@
 package com.saimon.controllers;
 
-import com.saimon.models.Patient;
+import com.saimon.models.PatientEntity;
 import com.saimon.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,12 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping(value = "/patients/add")
-    public void addPatient(@RequestBody Patient patient){
-        patientService.addPatient(patient);
+    public void addPatient(@RequestBody PatientEntity patientEntity){
+        patientService.addPatient(patientEntity);
     }
 
     @GetMapping(value = "/patients")
-    public List<Patient> getAllPatients(){
+    public List<PatientEntity> getAllPatients(){
         return patientService.getAllPatients();
     }
     /*
@@ -36,18 +36,18 @@ public class PatientController {
     }
 
     @GetMapping(value = "/patients/{id}")
-    public Optional<Patient> getPatientById(@PathVariable int id){
+    public Optional<PatientEntity> getPatientById(@PathVariable int id){
         return patientService.getPatientById(id);
     }
 
     @GetMapping(value = "/patients/name/{patientName}")
-    public Optional<Patient> getPatientByPatientName(@PathVariable String patientName){
+    public Optional<PatientEntity> getPatientByPatientName(@PathVariable String patientName){
         return patientService.getPatientByPatientName(patientName);
     }
 
     @PutMapping(value = "/patients/update")
-    public void updatePatient(@RequestBody Patient patient){
-        patientService.updatePatient(patient);
+    public void updatePatient(@RequestBody PatientEntity patientEntity){
+        patientService.updatePatient(patientEntity);
     }
 
     @DeleteMapping(value = "/patients/{id}")

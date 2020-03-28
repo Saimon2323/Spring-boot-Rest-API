@@ -1,21 +1,21 @@
 package com.saimon.service;
 
-import com.saimon.models.Patient;
+import com.saimon.models.PatientEntity;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
 
-    public void addPatient(Patient patient);
+    public void addPatient(PatientEntity patientEntity);
 
-    public void updatePatient(Patient patient);
+    public void updatePatient(PatientEntity patientEntity);
 
-    public Optional<Patient> getPatientById(int id);
+    public Optional<PatientEntity> getPatientById(int id);
 
-    public List<Patient> getAllPatients();
+    public List<PatientEntity> getAllPatients();
 
-    public Optional<Patient> getPatientByPatientName(String name);
+    public Optional<PatientEntity> getPatientByPatientName(String name);
 
     public List<String> getAllPatientsByKey(String patientName);
 

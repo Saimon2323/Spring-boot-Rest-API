@@ -1,6 +1,6 @@
 package com.saimon.impl;
 
-import com.saimon.models.Patient;
+import com.saimon.models.PatientEntity;
 import com.saimon.repository.PatientRepository;
 import com.saimon.service.PatientService;
 import org.json.JSONArray;
@@ -21,35 +21,35 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     @Override
-    public void addPatient(Patient patient) {
-        patientRepository.save(patient);
+    public void addPatient(PatientEntity patientEntity) {
+        patientRepository.save(patientEntity);
     }
 
     @Override
-    public void updatePatient(Patient patient) {
-        patientRepository.save(patient);
+    public void updatePatient(PatientEntity patientEntity) {
+        patientRepository.save(patientEntity);
     }
 
     @Override
-    public Optional<Patient> getPatientById(int id) {
+    public Optional<PatientEntity> getPatientById(int id) {
         return patientRepository.findById(id);
     }
 
     @Override
-    public List<Patient> getAllPatients() {
-        List<Patient> patients = new ArrayList<>();
+    public List<PatientEntity> getAllPatients() {
+        List<PatientEntity> patients = new ArrayList<>();
         patientRepository.findAll().forEach(patients::add);
         return patients;
     }
 
     @Override
-    public Optional<Patient> getPatientByPatientName(String patientName) {
+    public Optional<PatientEntity> getPatientByPatientName(String patientName) {
         return patientRepository.findByPatientName(patientName);
     }
 
     @Override
     public List<String> getAllPatientsByKey(String patientName) {
-        List<Patient> patients = new ArrayList<>();
+        List<PatientEntity> patients = new ArrayList<>();
         patientRepository.findAll().forEach(patients::add);
         JSONArray jsonArray = new JSONArray(patients);
         return IntStream.range(0, jsonArray.length())
