@@ -5,6 +5,7 @@ import com.saimon.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,12 @@ public class PatientController {
 
     @GetMapping(value = "/patients")
     public List<PatientEntity> getAllPatients(){
-        return patientService.getAllPatients();
+        // these lines(26-29) are testing purposes. to check individual items.
+        List<PatientEntity> patients = patientService.getAllPatients();
+        patients.forEach(patient -> {
+            System.out.println(patient.getPatientName());
+        });
+        return patientService.getAllPatients(); //this line is enough.
     }
     /*
      Upore method a annotation normally eta @GetMapping(value = "/patients") and eta dile default vabe result JSON format a dibe.
