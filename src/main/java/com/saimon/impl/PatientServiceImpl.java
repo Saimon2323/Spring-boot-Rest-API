@@ -37,9 +37,10 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientEntity> getAllPatients() {
-        List<PatientEntity> patients = new ArrayList<>();
-        patientRepository.findAll().forEach(patients::add);
-        return patients;
+        return patientRepository.findAll();
+//        List<PatientEntity> patients = new ArrayList<>();
+//        patientRepository.findAll().forEach(patients::add);
+//        return patients;
     }
 
     @Override
