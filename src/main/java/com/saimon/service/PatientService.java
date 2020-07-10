@@ -7,17 +7,17 @@ import java.util.Optional;
 
 public interface PatientService {
 
-    public void addPatient(PatientEntity patientEntity);
+    void addPatient(PatientEntity patientEntity);
 
-    public void updatePatient(PatientEntity patientEntity);
+    void updatePatient(PatientEntity patientEntity);
 
-    public Optional<PatientEntity> getPatientById(int id);
+    Optional<PatientEntity> getPatientById(int id);
 
-    public List<PatientEntity> getAllPatients();
+    List<PatientEntity> getAllPatients();
 
-    public Optional<PatientEntity> getPatientByPatientName(String name);
+    Optional<PatientEntity> getPatientByPatientName(String name);
 
-    public List<String> getAllPatientsByKey(String patientName);
+    List<String> getAllPatientsByKey(String patientName);
 
-    public void deletePatient(int id);
+    void deletePatient(int id);
 }
