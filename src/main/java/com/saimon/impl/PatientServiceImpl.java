@@ -1,5 +1,6 @@
 package com.saimon.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saimon.models.PatientEntity;
 import com.saimon.repository.PatientRepository;
 import com.saimon.service.PatientService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,6 +21,9 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Override
     public void addPatient(PatientEntity patientEntity) {
@@ -50,13 +55,15 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<String> getAllPatientsByKey(String patientName) {
-        List<PatientEntity> patients = new ArrayList<>();
-        patientRepository.findAll().forEach(patients::add);
-        JSONArray jsonArray = new JSONArray(patients);
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(patientName))
-                .collect(Collectors.toList());
+        List<PatientEntity> patients = patientRepository.findAll();
 
+//        JSONArray jsonArray = new JSONArray(patients);
+//        return IntStream.range(0, jsonArray.length())
+//                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(patientName))
+//                .collect(Collectors.toList());
+
+        return patients.stream().map(p ->
+                String.valueOf(objectMapper.convertValue(p, Map.class).get(patientName))).collect(Collectors.toList());
     }
 
     @Override
