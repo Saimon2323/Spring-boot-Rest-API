@@ -17,7 +17,7 @@ public interface PatientService {
 
     Optional<PatientEntity> getPatientByPatientName(String name);
 
-    List<String> getAllPatientsByKey(String patientName);
+    List<String> getAllSeparatelyByColumnName(String patientName);
 
     void deletePatient(int id);
 }

@@ -54,7 +54,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<String> getAllPatientsByKey(String patientName) {
+    public List<String> getAllSeparatelyByColumnName(String patientName) {
         List<PatientEntity> patients = patientRepository.findAll();
 
 //        JSONArray jsonArray = new JSONArray(patients);
