@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PatientService {
 
-    void addPatient(PatientEntity patientEntity);
+    PatientEntity addPatient(PatientEntity patientEntity);
 
     void updatePatient(PatientEntity patientEntity);
 

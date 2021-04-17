@@ -7,6 +7,7 @@ import com.saimon.service.PatientService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class PatientServiceImpl implements PatientService {
     private ObjectMapper objectMapper;
 
     @Override
-    public void addPatient(PatientEntity patientEntity) {
-        patientRepository.save(patientEntity);
+    public PatientEntity addPatient(PatientEntity patientEntity) {
+        return patientRepository.save(patientEntity);
     }
 
     @Override
@@ -42,7 +43,12 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientEntity> getAllPatients() {
-        return patientRepository.findAll();
+        return patientRepository.findAll(Sort.by("patientId").descending());
+/*
+        return patientRepository.findAll(Sort.by(Sort.Direction.DESC, "patientId"));
+        return patientRepository.findAll(Sort.by(Sort.Order.desc("patientId")));
+*/
+
 //        List<PatientEntity> patients = new ArrayList<>();
 //        patientRepository.findAll().forEach(patients::add);
 //        return patients;

@@ -15,8 +15,8 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping(value = "/patients/add")
-    public void addPatient(@RequestBody PatientEntity patientEntity){
-        patientService.addPatient(patientEntity);
+    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity){
+        return patientService.addPatient(patientEntity);
     }
 
     @GetMapping(value = "/patients")
