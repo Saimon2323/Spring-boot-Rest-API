@@ -15,8 +15,8 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping(value = "/patients/add")
-    public void addPatient(@RequestBody PatientEntity patientEntity){
-        patientService.addPatient(patientEntity);
+    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity){
+        return patientService.addPatient(patientEntity);
     }
 
     @GetMapping(value = "/patients")
@@ -35,9 +35,9 @@ public class PatientController {
      and Database connection cls er upore @XmlRootElement annotation add korte hobe (jodio na korle o kaj kore)
      */
 
-    @GetMapping(value = "/patients/only/{key}") //key like patientName, patientContactNo etc.
-    public List<String> getAllPatientsByKey(@PathVariable String key){
-        return patientService.getAllPatientsByKey(key);
+    @GetMapping(value = "/patients/only/{columnName}") //key like patientName, patientContactNo etc.
+    public List<String> getAllSeparatelyByColumnName(@PathVariable String columnName){
+        return patientService.getAllSeparatelyByColumnName(columnName);
     }
 
     @GetMapping(value = "/patients/{id}")

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PatientService {
 
-    void addPatient(PatientEntity patientEntity);
+    PatientEntity addPatient(PatientEntity patientEntity);
 
     void updatePatient(PatientEntity patientEntity);
 
@@ -17,7 +17,7 @@ public interface PatientService {
 
     Optional<PatientEntity> getPatientByPatientName(String name);
 
-    List<String> getAllPatientsByKey(String patientName);
+    List<String> getAllSeparatelyByColumnName(String patientName);
 
     void deletePatient(int id);
 }
