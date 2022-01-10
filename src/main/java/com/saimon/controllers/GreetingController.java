@@ -12,6 +12,9 @@ import java.util.concurrent.atomic.AtomicLong;
  * @since Apr 4/12/21 5:04 PM
  */
 
+// https://spring.io/guides/gs/rest-service/
+// https://youtu.be/MWLe1tqPmUo
+
 /*
 * A key difference between a traditional 'MVC controller' and the 'RESTful web service controller' shown earlier
 * is the way that the HTTP response body is created. Rather than relying on a view technology to perform
