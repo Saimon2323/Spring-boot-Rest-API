@@ -9,7 +9,7 @@ public interface PatientService {
 
     PatientEntity addPatient(PatientEntity patientEntity);
 
-    void updatePatient(PatientEntity patientEntity);
+    PatientEntity updatePatient(PatientEntity patientEntity);
 
     Optional<PatientEntity> getPatientById(int id);
 

@@ -15,12 +15,12 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping(value = "/patients/add")
-    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity){
+    public PatientEntity addPatient(@RequestBody PatientEntity patientEntity) {
         return patientService.addPatient(patientEntity);
     }
 
     @GetMapping(value = "/patients")
-    public List<PatientEntity> getAllPatients(){
+    public List<PatientEntity> getAllPatients() {
         // these lines(26-29) are testing purposes. to check individual items.
         List<PatientEntity> patients = patientService.getAllPatients();
         patients.forEach(patient -> {
@@ -36,27 +36,34 @@ public class PatientController {
      */
 
     @GetMapping(value = "/patients/only/{columnName}") //key like patientName, patientContactNo etc.
-    public List<String> getAllSeparatelyByColumnName(@PathVariable String columnName){
+    public List<String> getAllSeparatelyByColumnName(@PathVariable String columnName) {
         return patientService.getAllSeparatelyByColumnName(columnName);
     }
 
     @GetMapping(value = "/patients/{id}")
-    public Optional<PatientEntity> getPatientById(@PathVariable int id){
+    public Optional<PatientEntity> getPatientById(@PathVariable int id) {
         return patientService.getPatientById(id);
     }
 
     @GetMapping(value = "/patients/name/{patientName}")
-    public Optional<PatientEntity> getPatientByPatientName(@PathVariable String patientName){
+    public Optional<PatientEntity> getPatientByPatientName(@PathVariable String patientName) {
         return patientService.getPatientByPatientName(patientName);
     }
 
     @PutMapping(value = "/patients/update")
-    public void updatePatient(@RequestBody PatientEntity patientEntity){
-        patientService.updatePatient(patientEntity);
+    public PatientEntity updatePatient(@RequestBody PatientEntity patientEntity) {
+
+        Optional<PatientEntity> patient = patientService.getPatientById(patientEntity.getPatientId());
+
+        if (patient.isPresent()) {
+            return patientService.updatePatient(patientEntity);
+        }
+
+        return null;
     }
 
     @DeleteMapping(value = "/patients/{id}")
-    public void deletePatient(@PathVariable int id){
+    public void deletePatient(@PathVariable int id) {
         patientService.deletePatient(id);
     }
 

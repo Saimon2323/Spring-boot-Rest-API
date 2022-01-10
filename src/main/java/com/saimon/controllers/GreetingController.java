@@ -33,7 +33,7 @@ public class GreetingController {
     * @RequestParam binds the value of the query string parameter name into the name parameter of the getGreeting() method.
     * If the name parameter is absent in the request, the defaultValue of World is used.
     * */
-    @GetMapping("/greeting") // localhost:8080/greeting OR localhost:8080/greeting?name="Hasan"
+    @GetMapping("/greeting") // localhost:8080/greeting OR localhost:8080/greeting?name=Hasan
     public Greeting getGreeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
